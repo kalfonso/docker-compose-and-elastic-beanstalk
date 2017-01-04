@@ -2,18 +2,20 @@ version: '2'
 services:
 
   app-api:
-    image: "node:latest"
-    working_dir: /usr/src/app
+    image: "node:7.2.1"
+    working_dir: /usr/src/api
     command: ./run-dev.sh
     volumes:
-     - ./api:/usr/src/app
+     - ./api:/usr/src/api
+     - /usr/src/api/node_modules
 
   app-ui:
-    image: "node:latest"
-    working_dir: /usr/src/app
+    image: "node:7.2.1"
+    working_dir: /usr/src/ui
     command: ./run-dev.sh
     volumes:
-     - ./ui:/usr/src/app
+     - ./ui:/usr/src/ui
+     - /usr/src/ui/node_modules
 
   nginx:
     image: nginx
